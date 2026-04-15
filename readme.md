@@ -4,13 +4,13 @@
 
 ### The Moment That Started It
 
-In April 2026, I was using Codex CLI to explore the design of a user profile system for hey!stalker — a proactive Telegram ReAct agent built on Mem0 semantic memory. The conversation was long and exploratory, the kind where you start with a vague product question and end up somewhere you didn't expect.
+In April 2026, I was using an AI coding agent to explore requirements for a side project. It was one of those long, exploratory conversations — the kind where you start with a vague product question and end up somewhere you didn't expect.
 
-Midway through, I said something I hadn't planned: "A user's cognition isn't flat. It's at least two layers — a **stable layer** of things they've verified repeatedly and internalized as truth, and a **drifting layer** of recent impressions that are still floating, contradictory, not yet absorbed." Codex immediately recognized this as the most valuable insight in the entire discussion and used it to propose a "dual-source evolutionary" profile architecture.
+Midway through, I said something unplanned. An analogy. It wasn't in my notes or my outline, but the moment it came out, it connected several vague intuitions into a coherent framework. The agent immediately recognized it as the most valuable insight in the entire discussion and restructured its subsequent recommendations around it.
 
-When the conversation ended, I realized: **if I don't capture this right now, in two weeks I'll vaguely remember "I discussed some kind of layered profile design," but I won't remember the analogy, the phrasing, or the product intuition behind it.** So I manually asked Codex to save the conversation as an archived note.
+When the conversation ended, I realized: **if I don't capture this right now, in two weeks I'll vaguely remember "I discussed some kind of layered design," but I won't remember the analogy itself, the exact phrasing, or the product intuition behind it.** So I manually asked the agent to save the conversation as an archived note.
 
-Then I thought: this isn't the first time. Every deep exploration session with an AI agent produces moments like this — an unexpected analogy, a critical shift in thinking, a sentence I said off the cuff that crystallized something I'd been circling for days. These moments are as valuable as the code that eventually gets written, but they're ephemeral. The raw conversation transcript is too long and too noisy to dig through after the fact. The good stuff drowns.
+Then I thought: this isn't the first time. Every deep exploration session with an AI agent produces moments like this — an unexpected analogy, a critical shift in thinking, a sentence said off the cuff that crystallized something I'd been circling for days. These moments are as valuable as the code that eventually gets written, but they're ephemeral. The raw conversation transcript is too long and too noisy to dig through after the fact. The good stuff drowns.
 
 **If I have to ask my agent for the same thing twice, the system has failed.** That principle made the decision for me. I turned "idea archiving" into a reusable skill.
 
@@ -18,13 +18,13 @@ Then I thought: this isn't the first time. Every deep exploration session with a
 
 Four ideas shaped how capture-idea works.
 
-**Latent vs. deterministic, strictly separated.** Deciding which parts of a conversation are worth preserving — that's a judgment call. It belongs in latent space. Writing the file, generating the slug, updating the index, handling filename collisions — that's deterministic work. It belongs in code. So the skill is split in two: SKILL.md guides the LLM through the semantic distillation; `capture_idea.py` handles every file-system operation. Clean boundary, no leakage.
+**Latent vs. deterministic, strictly separated.** Deciding which parts of a conversation are worth preserving — that's a judgment call. It belongs in latent space. Writing the file, generating the slug, updating the index, handling filename collisions — that's deterministic work. It belongs in code. So the skill is split in two: SKILL.md guides the LLM through semantic distillation; a Python script handles every file-system operation. Clean boundary, no leakage.
 
-**Preserve the original words. Don't polish.** The single most important constraint in this skill is that verbatim quotes must remain entirely unaltered. When future-me reads back "some knowledge is rock-solid deep memory, some is still drifting in the shallows of your mind," I'm instantly back in that headspace. If the AI sanitizes it into "the user believes cognition exhibits hierarchical characteristics," all the texture and recognition value is gone. The raw words are the point.
+**Preserve the original words. Don't polish.** The single most important constraint in this skill is that verbatim quotes must remain entirely unaltered. When future-me reads back the exact words I used in that moment, I'm instantly back in that headspace. If the AI sanitizes it into generic technical terminology, all the texture and recognition value is gone. The raw words are the point.
 
-**Capture change, not topics.** The most valuable part of a conversation isn't what was discussed — it's  **where your thinking shifted** . The pivot from Plan A to Plan B. The moment a vague intuition snapped into a clear framework. The transition from "I'm not sure" to "oh, that's what this is about." Those turning points are what you actually want to revisit later. That's why the Thought Trajectory field is designed to record pivots and "aha" moments, not flat chronological narration.
+**Capture change, not topics.** The most valuable part of a conversation isn't what was discussed — it's where your thinking shifted. The pivot from Plan A to Plan B. The moment a vague intuition snapped into a clear framework. The transition from "I'm not sure" to "oh, that's what this is about." Those turning points are what you actually want to revisit later. That's why the Thought Trajectory field is designed to record pivots and aha moments, not flat chronological narration.
 
-**A skill is a permanent upgrade.** Before capture-idea existed, saving an insight was a one-off manual operation — interrupt the conversation flow, ask the agent to archive, come up with a filename, manage the directory yourself. Once it became a skill, the capability was permanently embedded in my development environment. It doesn't degrade. It doesn't forget. And when the underlying model improves, its judgment about what's worth capturing automatically gets better too.
+**A skill is a permanent upgrade.** Before capture-idea existed, saving an insight was a one-off manual operation — interrupt the conversation, ask the agent to archive, come up with a filename, manage the directory yourself. Once it became a skill, the capability was permanently embedded in my development environment. It doesn't degrade. It doesn't forget. And when the underlying model improves, its judgment about what's worth capturing automatically gets better too.
 
 ### What It Is Not
 
